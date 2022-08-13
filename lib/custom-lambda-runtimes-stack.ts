@@ -28,10 +28,6 @@ export class CustomLambdaRuntimesStack extends cdk.Stack {
       removalPolicy: cdk.RemovalPolicy.DESTROY
     });
 
-    bashRuntimeLambdaLayer.addPermission("BashRuntimeSharePermissions", {
-      accountId: "12345678901"
-    });
-
     new lambda.Function(this, "BashTestFunction", {
       layers: [bashRuntimeLambdaLayer],
       code: lambda.Code.fromAsset(`${__dirname}/function`),
